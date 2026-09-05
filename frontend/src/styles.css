@@ -1,0 +1,191 @@
+@import 'tailwindcss';
+
+:root {
+  --app-bg: #080c19;
+  --app-glow: rgba(80, 82, 199, 0.22);
+  --app-sidebar: #0b1020;
+  --app-sidebar-overlay: rgba(11, 16, 32, 0.95);
+  --app-header: rgba(8, 12, 25, 0.80);
+  --app-surface: #11182b;
+  --app-surface-subtle: #151e37;
+  --app-surface-hover: #141d36;
+  --app-surface-active: #1b2340;
+  --app-border-soft: #1b2440;
+  --app-border: #202945;
+  --app-border-strong: #27345c;
+  --app-border-dashed: #2b3554;
+  --app-text: #dce4f7;
+  --app-heading: #f4f5ff;
+  --app-text-strong: #eef2ff;
+  --app-text-high: #f0f2ff;
+  --app-text-secondary: #c5ccef;
+  --app-text-input: #aeb7dc;
+  --app-text-muted: #8893b3;
+  --app-text-subtle: #687493;
+  --app-primary: #777ff4;
+  --app-primary-muted: #8f95ff;
+  --app-warning-surface: #2a201e;
+  --app-warning-border: #55433b;
+  --app-success-surface: #102c2c;
+  --app-success-border: #23554d;
+  --app-danger-hover: #321d35;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--app-text);
+  background: var(--app-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+:root[data-theme="light"] {
+  --app-bg: #f5f7fb;
+  --app-glow: rgba(99, 102, 241, 0.08);
+  --app-sidebar: #ffffff;
+  --app-sidebar-overlay: rgba(255, 255, 255, 0.96);
+  --app-header: rgba(245, 247, 251, 0.88);
+  --app-surface: #ffffff;
+  --app-surface-subtle: #f1f4fa;
+  --app-surface-hover: #e9edf6;
+  --app-surface-active: #e7e9fb;
+  --app-border-soft: #e3e7f0;
+  --app-border: #dce2ed;
+  --app-border-strong: #cbd3e3;
+  --app-border-dashed: #c7cfdf;
+  --app-text: #2b3652;
+  --app-heading: #18213a;
+  --app-text-strong: #26324d;
+  --app-text-high: #26324d;
+  --app-text-secondary: #4b5874;
+  --app-text-input: #52617d;
+  --app-text-muted: #63718b;
+  --app-text-subtle: #7d8aa2;
+  --app-primary: #6269d9;
+  --app-primary-muted: #6269d9;
+  --app-warning-surface: #fff8e9;
+  --app-warning-border: #ecd9ac;
+  --app-success-surface: #ecfbf6;
+  --app-success-border: #b8e8d8;
+  --app-danger-hover: #fff0f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% -10%, var(--app-glow), transparent 35rem),
+    var(--app-bg);
+  color: var(--app-text);
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  line-height: 1.35;
+}
+
+button {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--app-text-subtle);
+}
+
+select option {
+  background: var(--app-surface);
+  color: var(--app-text);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid var(--app-border);
+  border-radius: 0.75rem;
+  background: var(--app-surface);
+  padding: 0.55rem 0.7rem;
+  color: var(--app-text-muted);
+  font-size: 0.75rem;
+  line-height: 1;
+  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--app-primary);
+  background: var(--app-surface-hover);
+  color: var(--app-text);
+}
+
+/* Keep the existing utility-heavy templates themeable without duplicating page markup. */
+[class~="bg-[#080c19]"] { background-color: var(--app-bg) !important; }
+[class~="bg-[#080c19]/80"] { background-color: var(--app-header) !important; }
+[class~="bg-[#0b1020]"] { background-color: var(--app-sidebar) !important; }
+[class~="bg-[#0b1020]/95"] { background-color: var(--app-sidebar-overlay) !important; }
+[class~="bg-[#11182b]"] { background-color: var(--app-surface) !important; }
+[class~="bg-[#151e37]"] { background-color: var(--app-surface-subtle) !important; }
+[class~="bg-[#141d36]"] { background-color: var(--app-surface-hover) !important; }
+[class~="bg-[#1b2340]"] { background-color: var(--app-surface-active) !important; }
+[class~="bg-[#202945]"] { background-color: var(--app-border) !important; }
+[class~="bg-[#2a201e]"] { background-color: var(--app-warning-surface) !important; }
+[class~="bg-[#102c2c]"] { background-color: var(--app-success-surface) !important; }
+[class~="bg-[#321d35]"] { background-color: var(--app-danger-hover) !important; }
+
+[class~="hover:bg-[#141d36]"]:hover { background-color: var(--app-surface-hover) !important; }
+[class~="hover:bg-[#151e37]"]:hover { background-color: var(--app-surface-subtle) !important; }
+[class~="hover:bg-[#1a2340]"]:hover { background-color: var(--app-surface-active) !important; }
+[class~="hover:bg-[#321d35]"]:hover { background-color: var(--app-danger-hover) !important; }
+
+[class~="border-[#1b2440]"] { border-color: var(--app-border-soft) !important; }
+[class~="border-[#202945]"] { border-color: var(--app-border) !important; }
+[class~="border-[#27345c]"] { border-color: var(--app-border-strong) !important; }
+[class~="border-[#2b3554]"] { border-color: var(--app-border-dashed) !important; }
+[class~="border-[#18223b]"] { border-color: var(--app-border-soft) !important; }
+[class~="border-[#55433b]"] { border-color: var(--app-warning-border) !important; }
+[class~="border-[#23554d]"] { border-color: var(--app-success-border) !important; }
+
+[class~="text-[#dce4f7]"] { color: var(--app-text) !important; }
+[class~="text-[#f4f5ff]"] { color: var(--app-heading) !important; }
+[class~="text-[#eef2ff]"] { color: var(--app-text-strong) !important; }
+[class~="text-[#f0f2ff]"] { color: var(--app-text-high) !important; }
+[class~="text-[#c5ccef]"] { color: var(--app-text-secondary) !important; }
+[class~="text-[#aeb7dc]"] { color: var(--app-text-input) !important; }
+[class~="text-[#8893b3]"] { color: var(--app-text-muted) !important; }
+[class~="text-[#687493]"] { color: var(--app-text-subtle) !important; }
+[class~="text-[#8f95ff]"] { color: var(--app-primary-muted) !important; }
+[class~="hover:text-[#dce4f7]"]:hover,
+[class~="hover:text-white"]:hover { color: var(--app-heading) !important; }
+
+.chart-panel .echarts {
+  width: 100%;
+  height: 100%;
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #16213b;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-page {
+    padding: 0 !important;
+  }
+
+  .chart-panel {
+    break-inside: avoid;
+    border-color: #e5e7eb !important;
+    background: #fff !important;
+  }
+}
